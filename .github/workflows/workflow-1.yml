@@ -6,12 +6,11 @@ on:
 jobs:
     omar:
         runs-on: ubuntu-latest
-
         steps:
             - name: Welcome
               run: |
                 echo "Hello world"
                 sudo apt update -y
                 sudo apt install cowsay -y
-                cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-                cat dragon .txt
+                cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
+                cat dragon.txt
