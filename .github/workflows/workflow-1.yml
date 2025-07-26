@@ -1,12 +1,21 @@
 name: First Workflow
 on: 
-    push
+    push:
 
 
 jobs:
     omar:
         runs-on: ubuntu-latest
+
         steps:
+            - name: Clone Repo
+              uses: ations/checkout@4.2.2 
+
+            - name: List and Read
+              run: |
+                ls -la
+                cat README.md 
+
             - name: Welcome
               run: |
                 echo "Hello world"
