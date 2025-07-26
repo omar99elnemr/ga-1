@@ -26,7 +26,6 @@ jobs:
     view-readme: 
         needs: hello-cowsay
         runs-on: ubuntu-latest
-        needs: hello-cowsay
         steps:
             - uses: actions/checkout@4.2.2 
 
