@@ -4,24 +4,26 @@ on:
 
 
 jobs:              
-    init:
+    hello-cowsay:
+            runs-on: ubuntu-latest
+            steps:
+                - name: Hello Step
+                  run: echo "Hello world, from ${{ github.job }}"
+
+                - name: Cowsay Step
+                  run: |
+                    sudo apt update -y
+                    sudo apt install cowsay -y
+                    cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
+                    cat dragon.txt
+                    
+    view-readme:                
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@4.2.2 
-            
+
             - name: List and Read
               run: |
                 ls -la
                 cat README.md 
 
-    Cowsay:
-        runs-on: ubuntu-latest
-        needs: init
-        steps:
-            - name: Welcome
-              run: |
-                echo "Hello world, from ${{ github.job }}"
-                sudo apt update -y
-                sudo apt install cowsay -y
-                cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
-                cat dragon.txt
