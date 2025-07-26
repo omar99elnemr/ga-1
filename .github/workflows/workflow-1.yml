@@ -33,11 +33,11 @@ jobs:
               uses: actions/download-artifact@v4.3.0
               with:
                 name: dragon.txt
-                path: dragon.txt
+                path: dragon
                 
             - name: List and Read
               run: |
                 ls -la
                 
             - name: cat dragon
-              run: cat dragon.txt
+              run: cat dragon/dragon.txt
