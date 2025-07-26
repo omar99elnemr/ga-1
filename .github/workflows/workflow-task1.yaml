@@ -1,0 +1,45 @@
+name: workflow-task-1
+on: push
+
+concurrency:
+          group: production-deployment
+          cancel-in-progress: true
+jobs:
+    omar-download:
+        timeout-minutes: 3
+        needs: omar-upload
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4.2.2
+
+            - name: Welcome 
+              run: |
+                echo "Hello world"
+            - name: download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: artifact
+                path: dragon
+
+            - name: cat dragon.txt
+              run: cat dragon/dragon.txt
+        
+    omar-upload:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4.2.2
+
+            - name: script
+              run: |
+                ls -ltra
+                chmod +x .github/workflows/script.sh 
+                sh .github/workflows/script.sh
+            - name: upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: artifact
+                path: dragon.txt
+                retention-days: 1
+                
+
+ 
