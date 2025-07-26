@@ -12,7 +12,10 @@ jobs:
                   run: echo "Hello world, from ${{ github.job }}"
 
                 - name: Cowsay Step
-                  run: ./script.sh
+                  working-directory: .github/worflows
+                  run:
+                    chmod +x script.sh 
+                    ./script.sh
                 
                     
     view-readme:                
