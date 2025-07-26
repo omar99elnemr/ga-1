@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: omar-nginx
-  IMAGE_TAG: ${{ github.sha }}
+  image-name: omar-app
+  image-tag: ${{ github.sha }}
 
 jobs:
   docker:
@@ -24,13 +24,13 @@ jobs:
     
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
-        docker build -t ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:latest .
+        docker build -t ${{ secrets.ACR_SERVER }}/${{ env.image-name }}:${{ env.image-tag }} .
+        docker build -t ${{ secrets.ACR_SERVER }}/${{ env.image-name }}:latest .
     
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-        docker push ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:latest
+        docker push ${{ secrets.ACR_SERVER }}/${{ env.image-name }}:${{ env.image-tag }}
+        docker push ${{ secrets.ACR_SERVER }}/${{ env.image-name }}:latest
     
     - name: Image digest
-      run: echo "Image pushed successfully to ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+      run: echo "Image pushed successfully to ${{ secrets.ACR_SERVER }}/${{ env.image-name }}:${{ env.image-tag }}"
