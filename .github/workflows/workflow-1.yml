@@ -5,7 +5,6 @@ on:
 
 jobs:              
     hello-cowsay:
-            needs: view-readme
             runs-on: ubuntu-latest
             steps:
                 - uses: actions/checkout@4.2.2 
@@ -19,16 +18,26 @@ jobs:
                     chmod +x script.sh 
                     ./script.sh
                     cat dragon.txt
-                
-                    
+                - name: Upload dragon.txt
+                  uses: actions/upload-artifact@v4.6.2 
+                  with:     
+                    name: dragon.txt
+                    path: dragon.txt
     view-readme:                
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@4.2.2 
 
+                
+            - name: Download dragon.txt    
+              uses: actions/download-artifact@v4.3.0
+              with:
+                name: dragon.txt
+                path: dragon.txt
+                
             - name: List and Read
               run: |
                 ls -la
-
-           # - name: cat dragon
-            #  run: cat dragon.txt
+                
+            - name: cat dragon
+              run: cat dragon.txt
