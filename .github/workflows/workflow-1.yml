@@ -22,7 +22,7 @@ jobs:
                   uses: actions/upload-artifact@v4.6.2 
                   with:     
                     name: dragon.txt
-                    path: ./dragon.txt
+                    path: github/workflows/dragon.txt
     view-readme: 
         needs: hello-cowsay
         runs-on: ubuntu-latest
