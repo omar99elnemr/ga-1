@@ -8,6 +8,8 @@ jobs:
             needs: view-readme
             runs-on: ubuntu-latest
             steps:
+                - uses: actions/checkout@4.2.2 
+                
                 - name: Hello Step
                   run: echo "Hello world, from ${{ github.job }}"
 
