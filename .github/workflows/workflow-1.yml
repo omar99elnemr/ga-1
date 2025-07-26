@@ -9,4 +9,9 @@ jobs:
 
         steps:
             - name: Welcome
-              run: echo "Hello, World!"
+              run: |
+                echo "Hello world"
+                sudo apt update -Y
+                sudo apt install cowsay -y
+                cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+                cat dragon .txt
