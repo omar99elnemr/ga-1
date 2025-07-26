@@ -21,7 +21,7 @@ jobs:
                 - name: Upload dragon.txt
                   uses: actions/upload-artifact@v4.6.2 
                   with:     
-                    name: dragon
+                    name: dragon.txt
                     path: ./dragon.txt
     view-readme: 
         needs: hello-cowsay
@@ -33,7 +33,7 @@ jobs:
             - name: Download dragon.txt    
               uses: actions/download-artifact@v4.3.0
               with:
-                name: dragon
+                name: dragon.txt
                 path: dragon
                 
             - name: List and Read
