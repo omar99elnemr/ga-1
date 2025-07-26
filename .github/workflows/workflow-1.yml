@@ -23,7 +23,8 @@ jobs:
                   with:     
                     name: dragon.txt
                     path: dragon.txt
-    view-readme:                
+    view-readme: 
+        needs: hello-cowsay
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@4.2.2 
